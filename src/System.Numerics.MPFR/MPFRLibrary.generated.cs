@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using System.Runtime.InteropServices;
 
 namespace System.Numerics.MPFR
@@ -50,6 +50,9 @@ namespace System.Numerics.MPFR
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int mpfr_set_d([In, Out] mpfr_struct rop, double op, int rnd);
 
+		//[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
+		//public static extern int mpfr_set_float128([In, Out] mpfr_struct rop, __float128 op, int rnd);
+
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int mpfr_set_ui_2exp([In, Out] mpfr_struct rop, ulong op, long e, int rnd);
 
@@ -79,6 +82,9 @@ namespace System.Numerics.MPFR
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern double mpfr_get_d([In, Out] mpfr_struct op, int rnd);
+
+		//[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
+		//public static extern __float128 mpfr_get_float128([In, Out] mpfr_struct op, int rnd);
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern long mpfr_get_si([In, Out] mpfr_struct op, int rnd);
@@ -205,6 +211,9 @@ namespace System.Numerics.MPFR
 		public static extern int mpfr_cbrt([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op, int rnd);
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern int mpfr_rootn_ui([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op, ulong k, int rnd);
+
+		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int mpfr_root([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op, ulong k, int rnd);
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
@@ -304,10 +313,16 @@ namespace System.Numerics.MPFR
 		public static extern int mpfr_log([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op, int rnd);
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern int mpfr_log_ui([In, Out] mpfr_struct rop, ulong op, int rnd);
+
+		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int mpfr_log2([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op, int rnd);
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int mpfr_log10([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op, int rnd);
+
+		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern int mpfr_log1p([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op, int rnd);
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int mpfr_exp([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op, int rnd);
@@ -317,6 +332,9 @@ namespace System.Numerics.MPFR
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int mpfr_exp10([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op, int rnd);
+
+		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern int mpfr_expm1([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op, int rnd);
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int mpfr_cos([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op, int rnd);
@@ -385,12 +403,6 @@ namespace System.Numerics.MPFR
 		public static extern int mpfr_fac_ui([In, Out] mpfr_struct rop, ulong op, int rnd);
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
-		public static extern int mpfr_log1p([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op, int rnd);
-
-		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
-		public static extern int mpfr_expm1([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op, int rnd);
-
-		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int mpfr_eint([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op, int rnd);
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
@@ -400,6 +412,9 @@ namespace System.Numerics.MPFR
 		public static extern int mpfr_gamma([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op, int rnd);
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern int mpfr_gamma_inc([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op, [In, Out] mpfr_struct op2, int rnd);
+
+		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int mpfr_lngamma([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op, int rnd);
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
@@ -407,6 +422,9 @@ namespace System.Numerics.MPFR
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int mpfr_digamma([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op, int rnd);
+
+		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern int mpfr_beta([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op1, [In, Out] mpfr_struct op2, int rnd);
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int mpfr_zeta([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op, int rnd);
@@ -445,6 +463,12 @@ namespace System.Numerics.MPFR
 		public static extern int mpfr_fms([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op1, [In, Out] mpfr_struct op2, [In, Out] mpfr_struct op3, int rnd);
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern int mpfr_fmma([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op1, [In, Out] mpfr_struct op2, [In, Out] mpfr_struct op3, [In, Out] mpfr_struct op4, int rnd);
+
+		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern int mpfr_fmms([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op1, [In, Out] mpfr_struct op2, [In, Out] mpfr_struct op3, [In, Out] mpfr_struct op4, int rnd);
+
+		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int mpfr_agm([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op1, [In, Out] mpfr_struct op2, int rnd);
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
@@ -469,7 +493,19 @@ namespace System.Numerics.MPFR
 		public static extern void mpfr_free_cache();
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern void mpfr_free_cache2(int way);
+
+		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern void mpfr_free_pool();
+
+		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern int mpfr_mp_memory_cleanup();
+
+		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int mpfr_sum([In, Out] mpfr_struct rop, IntPtr[] tab, ulong n, int rnd);
+
+		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern void mpfr_dump([In, Out] mpfr_struct op);
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int mpfr_printf(string template, IntPtr args);
@@ -502,6 +538,9 @@ namespace System.Numerics.MPFR
 		public static extern int mpfr_round([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op);
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern int mpfr_roundeven([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op);
+
+		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int mpfr_trunc([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op);
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
@@ -514,6 +553,9 @@ namespace System.Numerics.MPFR
 		public static extern int mpfr_rint_round([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op, int rnd);
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern int mpfr_rint_roundeven([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op, int rnd);
+
+		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int mpfr_rint_trunc([In, Out] mpfr_struct rop, [In, Out] mpfr_struct op, int rnd);
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
@@ -524,6 +566,9 @@ namespace System.Numerics.MPFR
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int mpfr_fmod([In, Out] mpfr_struct r, [In, Out] mpfr_struct x, [In, Out] mpfr_struct y, int rnd);
+
+		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern int mpfr_fmodquo([In, Out] mpfr_struct r, ref long q, [In, Out] mpfr_struct x, [In, Out] mpfr_struct y, int rnd);
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int mpfr_remainder([In, Out] mpfr_struct r, [In, Out] mpfr_struct x, [In, Out] mpfr_struct y, int rnd);
@@ -595,7 +640,13 @@ namespace System.Numerics.MPFR
 		public static extern int mpfr_buildopt_tls_p();
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern int mpfr_buildopt_float128_p();
+
+		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int mpfr_buildopt_decimal_p();
+
+		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern int mpfr_buildopt_sharedcache_p();
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
 		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CStringMarshaler))]
@@ -650,6 +701,9 @@ namespace System.Numerics.MPFR
 		public static extern void mpfr_clear_erangeflag();
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern void mpfr_clear_flags();
+
+		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void mpfr_set_underflow();
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
@@ -668,9 +722,6 @@ namespace System.Numerics.MPFR
 		public static extern void mpfr_set_erangeflag();
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
-		public static extern void mpfr_clear_flags();
-
-		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int mpfr_underflow_p();
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
@@ -687,6 +738,21 @@ namespace System.Numerics.MPFR
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int mpfr_erangeflag_p();
+
+		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern void mpfr_flags_clear(int mask);
+
+		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern void mpfr_flags_set(int mask);
+
+		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern int mpfr_flags_test(int mask);
+
+		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern int mpfr_flags_save();
+
+		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern void mpfr_flags_restore(int flags, int mask);
 
 		[DllImport(FileName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void mpfr_set_prec_raw([In, Out] mpfr_struct x, ulong prec);
