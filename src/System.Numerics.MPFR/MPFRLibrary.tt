@@ -34,6 +34,8 @@ namespace System.Numerics.MPFR
 	var mpfr_rnd_t = new Regex(@"mpfr_rnd_t", RegexOptions.Compiled);
 	var mpfr_prec_t = new Regex(@"mpfr_prec_t", RegexOptions.Compiled);
 	var mpfr_exp_t = new Regex(@"mpfr_exp_t", RegexOptions.Compiled);
+	var mpfr_flags_t = new Regex(@"mpfr_flags_t ", RegexOptions.Compiled);
+	var mpfr_free_cache_t = new Regex(@"mpfr_free_cache_t", RegexOptions.Compiled); 
 	var unsigned_long_int = new Regex(@"unsigned long( int)?", RegexOptions.Compiled);
 	var long_int = new Regex(@"long int", RegexOptions.Compiled);
 	var void_params = new Regex(@"\(void\)", RegexOptions.Compiled);
@@ -47,7 +49,7 @@ namespace System.Numerics.MPFR
 	var sbase = new Regex(@"base", RegexOptions.Compiled);
 	var elipsis = new Regex(@"\.\.\.|&hellip;", RegexOptions.Compiled);
 	var va_list = new Regex(@"va_list", RegexOptions.Compiled);
-	var mpfr_ptr_const = new Regex(@"mpfr_ptr const (.*?)\[\]", RegexOptions.Compiled);
+	var mpfr_ptr_const = new Regex(@"const mpfr_ptr (.*?)\[\]", RegexOptions.Compiled);
 	var fndecl = new Regex(@" \(", RegexOptions.Compiled);
 	var spaces = new Regex(@" +", RegexOptions.Compiled);
 
@@ -66,6 +68,8 @@ namespace System.Numerics.MPFR
 		def = mpfr_rnd_t.Replace(def, "int");
 		def = mpfr_prec_t.Replace(def, "ulong");
 		def = mpfr_exp_t.Replace(def, "long");
+		def = mpfr_flags_t.Replace(def, "int ");
+		def = mpfr_free_cache_t.Replace(def, "int"); 
 		def = mpfr_ptr_const.Replace(def, "IntPtr[] $1");
 		def = size_t.Replace(def, "uint");
 		def = unsigned_long_int.Replace(def, "ulong");

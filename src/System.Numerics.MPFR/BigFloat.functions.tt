@@ -1,4 +1,4 @@
-﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ template debug="false" hostspecific="true" language="C#" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.IO" #>
@@ -23,6 +23,8 @@ namespace System.Numerics.MPFR
 	var strct = new Regex(@"mpfr_struct", RegexOptions.Compiled);
 	var rndend = new Regex(@"int (rnd\w*)$", RegexOptions.Compiled);
 	var rnd = new Regex(@"int (rnd\w*)", RegexOptions.Compiled);
+	var flags = new Regex(@"int ((mask|flags)\w*)", RegexOptions.Compiled);
+	var flagsfunc = new Regex(@"flags_(test|save)", RegexOptions.Compiled);
 	var intptr = new Regex(@"IntPtr", RegexOptions.Compiled);
 	var types = new Regex(@"int|long|struct|string|float|double|IntPtr", RegexOptions.Compiled);
 	var types2 = new Regex(@"int|long|string|float|double|BigFloat|Rounding", RegexOptions.Compiled);
@@ -66,6 +68,7 @@ namespace System.Numerics.MPFR
 		var args1 = strct.Replace(args, "BigFloat");
 		args1 = rndend.Replace(args1, "Rounding? $1 = null");
 		args1 = rnd.Replace(args1, "Rounding $1");
+		args1 = flags.Replace(args1, "ExceptionFlag $1");
 
 		var asBool = retb.IsMatch(name);
 
@@ -98,6 +101,13 @@ namespace System.Numerics.MPFR
 			}
 		}
 
+		var flagscast = false;
+		if (flagsfunc.IsMatch(name))
+		{
+			ret = "ExceptionFlag";
+			flagscast = true;
+		}
+
 		var capitalized = NotVoid(parts).Select(x => Capitalize(x)).ToList();
 		
 		if (c.Length == 0)
@@ -107,6 +117,7 @@ namespace System.Numerics.MPFR
 		foreach (var arg in args.Split(','))
 		{
 			var opt = rnd.Replace(arg, "GetRounding($1)");
+			opt = flags.Replace(opt, "(Int32)$1");
 			if (strct.IsMatch(arg))
 				opt += "._value";
 			
@@ -124,7 +135,7 @@ namespace System.Numerics.MPFR
 		if (asBool)
 			ret = "bool";
 
-		fncstat.Add("public static " + ret + " " + c + "(" + args1 + ") => mpfr_" + name + "(" + args2.ToString() + ")" + (asBool ? " != 0" : "" ) + ";");
+		fncstat.Add("public static " + ret + " " + c + "(" + args1 + ") => " + (flagscast ? "(ExceptionFlag)" : "") + "mpfr_" + name + "(" + args2.ToString() + ")" + (asBool ? " != 0" : "" ) + ";");
 
 		if (!op.IsMatch(args1))
 			continue;

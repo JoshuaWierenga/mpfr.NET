@@ -2,7 +2,7 @@
 {
 	public partial class MPFRLibrary
 	{
-		public const string FileName = "libmpfr-4";
+		public const string FileName = "libmpfr-6";
 
 		public const int DefaultPrecision = 53;
 		public const Rounding DefaultRounding = Rounding.NearestTiesToEven;
