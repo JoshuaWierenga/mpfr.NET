@@ -7,7 +7,7 @@ using System.Text;
 using System.Runtime.InteropServices;
 using System.Numerics.MPFR;
 using System.Numerics.MPFR.Helpers;
-using System.Numerics.MPFR.Resources;
+using System.Numerics.MPFR.Properties;
 
 /// <summary>
 /// Used by the ModuleInit. All code inside the Initialize method is run as soon as the assembly is loaded.
