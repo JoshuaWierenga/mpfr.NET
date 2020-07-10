@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.Net.Sdk">
-  <Import Project="..\..\libs\nuget\ModuleInit.Fody.2.1.0\build\ModuleInit.Fody.props" Condition="Exists('..\..\libs\nuget\ModuleInit.Fody.2.1.0\build\ModuleInit.Fody.props')" />
+  <Import Project="..\..\libs\nuget\fody\6.2.0\build\Fody.targets" Condition="Exists('..\..\libs\nuget\fody\6.2.0\build\Fody.targets')" />
+  <Import Project="..\..\libs\nuget\moduleinit.fody\2.1.0\build\ModuleInit.Fody.props" Condition="Exists('..\..\libs\nuget\moduleinit.fody\2.1.0\build\ModuleInit.Fody.props')" />
   <Import Project="..\Common.props" />
   <PropertyGroup>
     <Configurations>Debug;Release</Configurations>
@@ -11,8 +12,9 @@
     <OutputType>Library</OutputType>
     <RootNamespace>System.Numerics.MPFR</RootNamespace>
     <AssemblyName>System.Numerics.MPFR</AssemblyName>
-    <TargetFramework>net452</TargetFramework>
+    <TargetFrameworks>net452;netstandard2.0</TargetFrameworks>
     <FileAlignment>512</FileAlignment>
+    <RestorePackagesPath>..\..\libs\nuget</RestorePackagesPath>
 
     <PackageId>System.Numerics.MPFR</PackageId>
     <Version>1.1.0</Version>
@@ -46,11 +48,23 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
-  <ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net452' ">
     <Reference Include="mscorlib" />
     <Reference Include="System" />
-    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
   </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Fody" Version="6.2.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="ModuleInit.Fody" Version="2.1.0" />
+  </ItemGroup>
+
   <ItemGroup>
     <Compile Update="BigFloat.functions.cs">
       <AutoGen>True</AutoGen>
@@ -113,19 +127,12 @@
       <PackagePath></PackagePath>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Fody" Version="6.2.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="ModuleInit.Fody" Version="2.1.0" />
-  </ItemGroup>
-  <Import Project="..\..\libs\nuget\Fody.6.2.0\build\Fody.targets" Condition="Exists('..\..\libs\nuget\Fody.6.2.0\build\Fody.targets')" />
+
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\libs\nuget\Fody.6.2.0\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\libs\nuget\Fody.6.2.0\build\Fody.targets'))" />
-    <Error Condition="!Exists('..\..\libs\nuget\ModuleInit.Fody.2.1.0\build\ModuleInit.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\libs\nuget\ModuleInit.Fody.2.1.0\build\ModuleInit.Fody.props'))" />
+    <Error Condition="!Exists('..\..\libs\nuget\fody\6.2.0\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\libs\nuget\fody\6.2.0\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\..\libs\nuget\moduleinit.fody\2.1.0\build\ModuleInit.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\libs\nuget\moduleinit.fody\2.1.0\build\ModuleInit.Fody.props'))" />
   </Target>
 </Project>
