@@ -3,7 +3,7 @@
   <PropertyGroup>
     <SolutionDir Condition="'$(SolutionDir)' == ''">$(MSBuildThisFileDirectory)</SolutionDir>
     <OutputPath>$(SolutionDir)\bin\$(MSBuildProjectName)\$(Platform)\$(Configuration)\$(TargetFramework)</OutputPath>
-    <IntermediateOutputPath>$(SolutionDir)\obj\$(MSBuildProjectName)\$(Platform)\$(Configuration)\$(TargetFramework)</IntermediateOutputPath>
+    <IntermediateOutputPath>$(SolutionDir)\obj\$(MSBuildProjectName)\$(Platform)\$(Configuration)</IntermediateOutputPath>
     <OutDir>$(SolutionDir)\bin\$(MSBuildProjectName)\$(Platform)\$(Configuration)\$(TargetFramework)</OutDir>
     <IntDir>$(SolutionDir)\obj\$(MSBuildProjectName)\$(Platform)\$(Configuration)\$(TargetFramework)</IntDir>
   </PropertyGroup>

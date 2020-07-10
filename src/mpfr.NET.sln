@@ -1,10 +1,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Numerics.MPFR.Native.TestApp", "System.Numerics.MPFR.Native.TestApp\System.Numerics.MPFR.Native.TestApp.csproj", "{C7130BCB-AB13-43C5-B29F-2A460465F1C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Numerics.MPFR", "System.Numerics.MPFR\System.Numerics.MPFR.csproj", "{3E492A39-126B-48A2-AFDB-31FF0934D774}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.Numerics.MPFR", "System.Numerics.MPFR\System.Numerics.MPFR.csproj", "{3E492A39-126B-48A2-AFDB-31FF0934D774}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F94DF17D-17F8-4662-B000-01E2289A2976}"
 EndProject
@@ -16,6 +16,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{80280845
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Numerics.MPFR.Tests", "System.Numerics.MPFR.Tests\System.Numerics.MPFR.Tests.csproj", "{E0512CE4-1E57-4BBD-8770-29811D6E8E45}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3E492A39-126B-48A2-AFDB-31FF0934D774} = {3E492A39-126B-48A2-AFDB-31FF0934D774}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,5 +73,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{C7130BCB-AB13-43C5-B29F-2A460465F1C9} = {F94DF17D-17F8-4662-B000-01E2289A2976}
 		{E0512CE4-1E57-4BBD-8770-29811D6E8E45} = {F94DF17D-17F8-4662-B000-01E2289A2976}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C5FF06F0-F76E-4327-AF62-407B03E90E38}
 	EndGlobalSection
 EndGlobal
