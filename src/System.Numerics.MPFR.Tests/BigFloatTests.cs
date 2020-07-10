@@ -24,13 +24,13 @@ namespace System.Numerics.MPFR.Tests
 			var d = new[] { "d0", "d2", "d10", "d100" };
 			var s = new[] { "p" };
 			var e = new[] { "e" };
-			var c = new[] { "c" };
+            //var c = new[] { "c" };
 
 			b.ForEach(FormatShouldNotThrow);
 			d.ForEach(FormatShouldNotThrow);
 			s.ForEach(FormatShouldNotThrow);
 			e.ForEach(FormatShouldNotThrow);
-			c.ForEach(FormatShouldNotThrow);
+			//c.ForEach(FormatShouldNotThrow);
 
 			new[] {null, ""}.ForEach(FormatShouldNotThrow);
 

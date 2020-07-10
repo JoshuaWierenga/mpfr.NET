@@ -2,9 +2,9 @@
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <SolutionDir Condition="'$(SolutionDir)' == ''">$(MSBuildThisFileDirectory)</SolutionDir>
-    <OutputPath>$(SolutionDir)\bin\$(MSBuildProjectName)\$(Platform)\$(Configuration)\</OutputPath>
-    <IntermediateOutputPath>$(SolutionDir)\obj\$(MSBuildProjectName)\$(Platform)\$(Configuration)\</IntermediateOutputPath>
-    <OutDir>$(SolutionDir)\bin\$(MSBuildProjectName)\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)\obj\$(MSBuildProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <OutputPath>$(SolutionDir)\bin\$(MSBuildProjectName)\$(Platform)\$(Configuration)\$(TargetFramework)</OutputPath>
+    <IntermediateOutputPath>$(SolutionDir)\obj\$(MSBuildProjectName)\$(Platform)\$(Configuration)\$(TargetFramework)</IntermediateOutputPath>
+    <OutDir>$(SolutionDir)\bin\$(MSBuildProjectName)\$(Platform)\$(Configuration)\$(TargetFramework)</OutDir>
+    <IntDir>$(SolutionDir)\obj\$(MSBuildProjectName)\$(Platform)\$(Configuration)\$(TargetFramework)</IntDir>
   </PropertyGroup>
 </Project>

@@ -9,4 +9,5 @@ libs/nuget/
 *.user
 nuget/packages
 nuget/tools
-/src/System.Numerics.MPFR/obj/
+src/packages/
+src/System.Numerics.MPFR/obj/
